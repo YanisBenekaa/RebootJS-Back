@@ -3,7 +3,7 @@
   "express_debug": true,
   "mongo_host": "cluster0.3vtlm.mongodb.net",
   "mongo_user": "YanisB",
-  "mongo_pass": "myPwd",
+  "mongo_pass": "pwd",
   "mongo_databse": "flint-messenger",
   "mongo_debug": true
 }
