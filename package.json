@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "node ./dist/server.js",
-    "build": "tsc --project tsconfig.prod.json",
+    "build": "tsc --project tsconfig.json",
     "test": "jest",
     "dev-env": "nodemon"
   },
