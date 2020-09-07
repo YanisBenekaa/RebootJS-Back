@@ -15,7 +15,8 @@
     "express": "^4.17.1",
     "helmet": "^3.23.3",
     "mongoose": "^5.10.3",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "typescript": "^4.0.2"
   },
   "devDependencies": {
     "@types/helmet": "0.0.47",
