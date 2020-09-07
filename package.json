@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Backend of the Messenger app for the RebootJS training",
   "main": "dist/server.js",
+  "engines": {
+    "node": "12.x"
+  },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "@types/express": "^4.17.7",
