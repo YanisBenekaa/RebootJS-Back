@@ -1,6 +1,6 @@
 import { Strategy } from "passport-local";
 import passport from "passport";
-import { Profile } from "../models/profiles";
+import { IProfile, Profile } from "../models/profiles";
 import { Handler } from "express";
 
 passport.use(
@@ -19,9 +19,23 @@ passport.use(
         return done(new Error("Profile not found"));
       });
     } catch (error) {
-      done(error);
+      return done(error);
     }
   })
 );
 
+passport.serializeUser(({ _id }: IProfile, done) => {
+  done(null, _id);
+});
+
+passport.deserializeUser((_id, done) => {
+  Profile.findById(_id, (err, profile) => {
+    if (err) {
+      return done(err);
+    }
+    return done(undefined, profile);
+  });
+});
+
 export const authenticationInitialize = (): Handler => passport.initialize();
+export const authenticationSession = (): Handler => passport.session();
