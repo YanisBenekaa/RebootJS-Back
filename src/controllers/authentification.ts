@@ -1,6 +1,7 @@
 import { Strategy } from "passport-local";
 import passport from "passport";
 import { Profile } from "../models/profiles";
+import { Handler } from "express";
 
 passport.use(
   new Strategy((username: string, password: string, done) => {
@@ -22,3 +23,5 @@ passport.use(
     }
   })
 );
+
+export const authenticationInitialize = (): Handler => passport.initialize();
