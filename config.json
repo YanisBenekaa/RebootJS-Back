@@ -5,5 +5,7 @@
   "mongo_user": "YanisB",
   "mongo_pass": "pwd",
   "mongo_databse": "flint-messenger",
-  "mongo_debug": true
+  "mongo_debug": true,
+  "session_cookie_name": "session_id",
+  "session_secret": "mySessionSecretKey"
 }
