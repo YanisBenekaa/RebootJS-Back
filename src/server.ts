@@ -1,6 +1,7 @@
 import express, { Request, Response, ErrorRequestHandler } from "express";
 import morgan from "morgan";
 import helmet from "helmet";
+import cors from "cors";
 import { configuration, IConfig } from "./config";
 import { connect } from "./database";
 
@@ -25,6 +26,7 @@ export function createExpressApp(config: IConfig): express.Express {
   app.use(morgan("combined"));
   app.use(helmet());
   app.use(express.json());
+  app.use(cors());
 
   app.use(authenticationInitialize());
   app.use(authenticationSession());
