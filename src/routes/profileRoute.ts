@@ -38,4 +38,14 @@ router.get(
   }
 );
 
+router.get("/", (req: Request, res: Response) => {
+  Profile.find({}, "_id email firstname lastname")
+    .then((profiles) => {
+      return res.status(200).send(profiles);
+    })
+    .catch((error) => {
+      return res.status(500).send();
+    });
+});
+
 export default router;
