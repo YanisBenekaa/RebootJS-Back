@@ -16,7 +16,7 @@ passport.use(
             return done(null, profile);
           }
         }
-        return done(new Error("Profile not found"));
+        return done(new ProfileNotFoundError("Profile not found"));
       });
     } catch (error) {
       return done(error);
@@ -39,3 +39,4 @@ passport.deserializeUser((_id, done) => {
 
 export const authenticationInitialize = (): Handler => passport.initialize();
 export const authenticationSession = (): Handler => passport.session();
+export class ProfileNotFoundError extends Error {}
