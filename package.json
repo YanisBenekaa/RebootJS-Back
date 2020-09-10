@@ -36,6 +36,7 @@
     "@types/helmet": "0.0.47",
     "@types/morgan": "^1.9.1",
     "jest": "^26.4.2",
+    "mockingoose": "^2.13.2",
     "nodemon": "^2.0.4"
   },
   "scripts": {
