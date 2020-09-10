@@ -1,6 +1,7 @@
 import { Request, Response, Router } from "express";
 import { Profile } from "../models/profiles";
 import { authenticationRequired } from "../middlewares/authenticationRequired";
+import { getAllProfiles, getProfile } from "../controllers/profiles";
 
 const router = Router();
 
@@ -24,26 +25,28 @@ router.get(
   (req: Request, res: Response) => {
     const profileId = req.params["profileId"];
 
-    Profile.findById(profileId, "_id email", (err, profile) => {
-      if (err) {
-        console.log("Il y a eu une erreur");
-      }
-      if (profile === null) {
-        res.status(404);
-        return;
-      }
-
-      res.send(profile);
-    });
+    getProfile(profileId)
+      .then((profile) => {
+        if (profile === null) {
+          return res.status(404).send("Profile not found");
+        }
+        return res.send(profile.getSafeProfile());
+      })
+      .catch((error) => {
+        console.error(error);
+        return res.status(500).send();
+      });
   }
 );
 
 router.get("/", (req: Request, res: Response) => {
-  Profile.find({}, "_id email firstname lastname")
-    .then((profiles) => {
-      return res.status(200).send(profiles);
+  getAllProfiles()
+    .then((profiles) => profiles.map((profile) => profile.getSafeProfile()))
+    .then((safeProfiles) => {
+      return res.status(200).send(safeProfiles);
     })
     .catch((error) => {
+      console.error(error);
       return res.status(500).send();
     });
 });
