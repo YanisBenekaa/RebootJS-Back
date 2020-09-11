@@ -14,9 +14,15 @@ router.post("/", (req: Request, res: Response) => {
     lastname: lastname,
   });
   newProfile.setPassword(password);
-  newProfile.save();
-
-  res.send("Utilisateur créé");
+  newProfile
+    .save()
+    .then((profile) => {
+      return res.send(profile.getSafeProfile());
+    })
+    .catch((error) => {
+      console.error(error);
+      return res.status(500).send();
+    });
 });
 
 router.get(
