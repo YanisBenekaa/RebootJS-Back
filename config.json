@@ -4,7 +4,7 @@
   "mongo_host": "cluster0.3vtlm.mongodb.net",
   "mongo_user": "YanisB",
   "mongo_pass": "pwd",
-  "mongo_databse": "flint-messenger",
+  "mongo_database": "flint-messenger",
   "mongo_debug": true,
   "session_cookie_name": "session_id",
   "session_secret": "mySessionSecretKey"
