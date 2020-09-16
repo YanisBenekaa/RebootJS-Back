@@ -86,7 +86,7 @@ router.get(
   }
 );
 
-router.get("/", (req: Request, res: Response) => {
+router.get("/", authenticationRequired, (req: Request, res: Response) => {
   getAllProfiles()
     .then((profiles) => profiles.map((profile) => profile.getSafeProfile()))
     .then((safeProfiles) => {
