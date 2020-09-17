@@ -9,7 +9,8 @@ router.get("/", authenticationRequired, async (req: Request, res: Response) => {
   if (!req.user) {
     return res.status(401).send("You must be authenticated");
   }
-  return await messageController.getAllMessages(req.user as IProfile);
+  const messages = await messageController.getAllMessages(req.user as IProfile);
+  return res.status(200).send(messages);
 });
 
 router.get(
@@ -19,10 +20,11 @@ router.get(
     if (!req.user) {
       return res.status(401).send("You must be authenticated");
     }
-    return await messageController.getAllMessages(
+    const messages = await messageController.getAllMessages(
       req.user as IProfile,
       req.params["conversationId"]
     );
+    return res.status(200).send(messages);
   }
 );
 
@@ -33,14 +35,15 @@ router.post(
     if (!req.user) {
       return res.status(401).send("You must be authenticated");
     }
-    const { conversationId, targets, content, emitter } = req.body;
-    return await messageController.createMessage(
-      req.user as IProfile,
+    const { conversationId, targets, content } = req.body;
+    const user = req.user as IProfile;
+    const message = await messageController.createMessage(
       conversationId,
       targets,
-      emitter,
+      user._id,
       content
     );
+    return res.status(200).send(message);
   }
 );
 
