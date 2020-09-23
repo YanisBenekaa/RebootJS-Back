@@ -1,7 +1,8 @@
 import { Request, Response, Router } from "express";
 import { authenticationRequired } from "../middlewares/authenticationRequired";
 import * as messageController from "../controllers/messages";
-import { IProfile } from "../models/profiles";
+import { IProfile, Profile } from "../models/profiles";
+import { io } from "../socket";
 
 const router = Router();
 
@@ -43,7 +44,18 @@ router.post(
       user._id,
       content
     );
-    return res.status(200).send(message);
+
+    res.status(200).send(message);
+
+    return await Promise.all(
+      message.targets.map(async (target) => {
+        const profile = await Profile.findById(target);
+        const socketId = profile?.socket;
+        if (socketId) {
+          io.to(socketId).emit("chat-message", message.toJSON());
+        }
+      })
+    );
   }
 );
 
