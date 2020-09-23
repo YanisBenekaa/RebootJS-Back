@@ -16,6 +16,8 @@
     "@types/mongoose": "^5.7.36",
     "@types/passport": "^1.0.4",
     "@types/passport-local": "^1.0.33",
+    "@types/passport.socketio": "^3.7.3",
+    "@types/socket.io": "^2.1.11",
     "body-parser": "^1.19.0",
     "connect-mongo": "^3.2.0",
     "cors": "^2.8.5",
@@ -29,6 +31,8 @@
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "passport.socketio": "^3.7.0",
+    "socket.io": "^2.3.0",
     "typescript": "^4.0.2"
   },
   "devDependencies": {
