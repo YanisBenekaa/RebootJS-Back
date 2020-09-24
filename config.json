@@ -1,11 +1,13 @@
 {
   "PORT": 3000,
   "express_debug": true,
-  "mongo_host": "cluster0.3vtlm.mongodb.net",
-  "mongo_user": "YanisB",
-  "mongo_pass": "pwd",
+  "mongo_host": "cluster0.xwhrm.mongodb.net",
+  "mongo_user": "thomas",
+  "mongo_pass": "myPwd",
   "mongo_database": "flint-messenger",
   "mongo_debug": true,
   "session_cookie_name": "session_id",
-  "session_secret": "mySessionSecretKey"
+  "session_secret": "mySessionSecretKey",
+  "twilio_auth_sid": "myTwilioAuthSid",
+  "twilio_auth_token": "myTwilioAuthToken"
 }
