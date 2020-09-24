@@ -13,6 +13,7 @@ import {
 import profileRoutes from "./routes/profileRoute";
 import loginRoute from "./routes/loginRoute";
 import messageRoute from "./routes/messageRoute";
+import webrtcRoute from "./routes/webrtcRoute";
 
 import session from "express-session";
 import connectMongo from "connect-mongo";
@@ -59,6 +60,8 @@ export function createExpressApp(config: IConfig): express.Express {
   app.use("/profile", profileRoutes);
   app.use("/login", loginRoute);
   app.use("/messages", messageRoute);
+  app.use("/webrtc", webrtcRoute);
+
   app.get("/", (req: Request, res: Response) => {
     res.send("This is the boilerplate for Flint Messenger app");
   });
