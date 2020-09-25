@@ -9,5 +9,6 @@
   "session_cookie_name": "session_id",
   "session_secret": "mySessionSecretKey",
   "twilio_auth_sid": "myTwilioAuthSid",
-  "twilio_auth_token": "myTwilioAuthToken"
+  "twilio_auth_token": "myTwilioAuthToken",
+  "_comment" : "myTwilioAuthToken est une information sensible, elle doit être exportée comme mongo_pass"
 }
